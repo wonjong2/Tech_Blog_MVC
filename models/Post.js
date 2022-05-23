@@ -18,11 +18,11 @@ Post.init(
             allowNull: false,
         },
         content: {
-            type: DataTypes.STRING,
+            type: DataTypes.STRING(1234),
             allowNull: false,
         },
         date: {
-            type: DataTypes.DATEONLY,
+            type: DataTypes.DATE,
             allowNull: false,
         },
         creator_id: {

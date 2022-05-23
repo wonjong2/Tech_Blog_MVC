@@ -18,7 +18,7 @@ Comment.init(
             allowNull: false,
         },
         date: {
-            type: DataTypes.DATEONLY,
+            type: DataTypes.DATE,
             allowNull: false,
         },
         commentor_id: {

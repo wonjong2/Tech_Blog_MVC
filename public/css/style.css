@@ -1,0 +1,19 @@
+body {
+    background-color: rgb(183, 243, 183);
+}
+
+#page-title {
+    margin-left: 8px;
+    margin-bottom: 15px;
+    padding: 4px 8px;
+    border: 1px black solid;
+    border-radius: 6px;
+    box-shadow: 4px 4px gray;
+    color: black !important;
+    font-weight: bold;
+    background: lightgreen;
+}
+
+.nav-link {
+    color: black
+}

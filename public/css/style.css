@@ -17,3 +17,15 @@ body {
 .nav-link {
     color: black
 }
+
+.card-header {
+    color: white
+}
+
+.card {
+    border: 2px rgb(99, 103, 108) solid
+}
+
+.post-title {
+    font-size: 1.5rem
+}

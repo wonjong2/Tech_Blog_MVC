@@ -26,6 +26,14 @@ body {
     border: 2px rgb(99, 103, 108) solid
 }
 
-.post-title {
+.title {
     font-size: 1.5rem
+}
+
+.btn {
+    width: 100%;
+}
+
+.auth-option {
+    margin: 10px 0 0 0
 }

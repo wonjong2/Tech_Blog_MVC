@@ -25,18 +25,14 @@ router.get('/', async (req, res) => {
 
 router.get('/dashboard', withAuth, async (req, res) => {
     try {
-        console.log(req.session.user_id);
         const myPostData = await User.findOne({
-            where: { user_name: req.session.user_id },
+            where: { id: req.session.user_id },
             include: { model: Post, attributes: ['id', 'title', 'date'] }
         })
-        console.log(myPostData);
         const myPosts = myPostData.posts.map((post) => post.get({ plain: true }));
-        console.log("myPosts", myPosts);
         res.render('dashboard', { myPosts, logged_in: true })
     }
     catch (err) {
-        console.log(err);
         res.status(500).json(err);
     }
 });

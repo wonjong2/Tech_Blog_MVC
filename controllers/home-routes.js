@@ -23,8 +23,7 @@ router.get('/', async (req, res) => {
     }
 });
 
-// router.get('/dashboard', withAuth, async (req, res) => {
-router.get('/dashboard', async (req, res) => {
+router.get('/dashboard', withAuth, async (req, res) => {
     try {
         console.log(req.session.user_id);
         const myPostData = await User.findOne({

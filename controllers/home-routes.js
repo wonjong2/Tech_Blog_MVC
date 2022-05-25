@@ -26,7 +26,7 @@ router.get('/', async (req, res) => {
 router.get('/dashboard', withAuth, async (req, res) => {
     try {
         const myPostData = await Post.findAll({
-            where: { id: req.session.user }
+            where: { id: req.session.user_id }
         })
         const myPosts = myPostData.map((post) => post.get({ plain: true }));
         res.render('dashboard', { myPosts, logged_in: true })

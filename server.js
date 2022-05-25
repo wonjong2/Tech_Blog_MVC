@@ -17,13 +17,13 @@ const hbs = exphbs.create({ helpers });
 const sess = {
     secret: 'Super secret secret',
     cookie: {
-        maxAge: 180,
+        maxAge: 10000,
         httpOnly: true,
         secure: false,
         sameSite: 'strict',
     },
+    rolling: true,
     resave: false,
-    // saveUninitialized: true,
     saveUninitialized: true,
     store: new SequelizeStore({
         db: sequelize,
@@ -33,7 +33,6 @@ const sess = {
 app.use(session(sess));
 
 app.engine('handlebars', hbs.engine);
-//app.engine('handlebars', exphbs.engine());
 app.set('view engine', 'handlebars');
 
 app.use(express.json());

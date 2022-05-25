@@ -20,6 +20,13 @@ CSS describes how HTML elements should be displayed.`,
         date: 'May 15, 2022',
         creator_id: 1
     },
+    {
+        title: 'Testing Post',
+        content: `Too difficult`,
+        date: 'May 24, 2022',
+        creator_id: 4
+    },
+
 ];
 
 const seedPosts = () => Post.bulkCreate(postData);

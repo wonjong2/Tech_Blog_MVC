@@ -13,6 +13,10 @@ let userData = [
         user_name: 'Seahawks',
         password: '34567890'
     },
+    {
+        user_name: 'wonjong2',
+        password: '123456789'
+    },
 ];
 
 const seedUsers = async () => User.bulkCreate(userData, {

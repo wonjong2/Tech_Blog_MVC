@@ -1,13 +1,13 @@
 const updatePostHandler = async (event) => {
     event.preventDefault();
 
-    // Collect values from the login form
+    // Collect values from the edit form
     const id = document.querySelector('.card').dataset.id
     const title = document.querySelector('#title-post').value.trim();
     const content = document.querySelector('#content-post').value.trim();
 
     if (id && title && content) {
-        // Send a POST request to the API endpoint
+        // Send a PUT request to the API endpoint
         const response = await fetch(`/api/posts/${id}`, {
             method: 'PUT',
             body: JSON.stringify({ id, title, content }),
@@ -24,7 +24,24 @@ const updatePostHandler = async (event) => {
 }
 
 const deletePostHandler = async (event) => {
+    // Collect values from the edit form
+    const id = document.querySelector('.card').dataset.id;
 
+    if (id) {
+        // Send a DELETE request to the API endpoint
+        const response = await fetch(`/api/posts/${id}`, {
+            method: 'DELETE',
+            body: JSON.stringify({ id }),
+            headers: { 'Content-Type': 'application/json' },
+        });
+
+        if (response.ok) {
+            // If successful, redirect the browser to the dashboard page
+            document.location.replace('/dashboard');
+        } else {
+            alert(response.statusText);
+        }
+    }
 }
 
 document

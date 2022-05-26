@@ -19,4 +19,22 @@ router.post('/', async (req, res) => {
     }
 });
 
+router.put('/:id', async (req, res) => {
+    try {
+        const { id, title, content } = req.body;
+        const updatedPost = {
+            title,
+            content,
+            date: new Date(),
+            creator_id: req.session.user_id
+        }
+        const postData = await Post.update(updatedPost, {
+            where: { id }
+        });
+        res.status(200).json(postData);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
 module.exports = router;

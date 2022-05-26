@@ -1,5 +1,5 @@
 <div class="container-fluid" id="new-post-form">
-    <div class="card mt-3 mx-5" data-id="1">
+    <div class="card mt-3 mx-5" data-id="{{post.id}}">
         <div
             class="d-flex justify-content-start align-items-center card-header bg-secondary"
         >
@@ -14,7 +14,7 @@
                         class="form-control"
                         id="title-post"
                         value="{{post.title}}""
-                    />
+                        />
                 </div>
                 <div class="mb-3">
                     <label for="content-post" class="form-label">Content</label>
@@ -42,4 +42,4 @@
     </div>
 </div>
 
-<script src="/js/login.js" type="text/javascript"></script>
+<script src="/js/editpost.js" type="text/javascript"></script>

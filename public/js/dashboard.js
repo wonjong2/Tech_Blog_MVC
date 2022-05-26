@@ -31,7 +31,10 @@ const createPostHandler = async (event) => {
 };
 
 const selectedPostHandler = async (event) => {
-    const id = event.target.dataset.postId;
+    console.log(event);
+    const id = event.target.dataset.postId ? event.target.dataset.postId : event.target.parentElement.dataset.postId;
+
+    console.log(id)
     if (id) {
         try {
             const response = await fetch(`/dashboard/${id}`, {
@@ -39,7 +42,7 @@ const selectedPostHandler = async (event) => {
             });
 
             if (response.ok) {
-                document.location.replace(`/dashboard/${id}`);
+                document.location.assign(`/dashboard/${id}`);
             }
             else {
                 alert(response.statusText);

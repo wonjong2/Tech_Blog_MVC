@@ -30,6 +30,31 @@ const createPostHandler = async (event) => {
     }
 };
 
+const selectedPostHandler = async (event) => {
+    const id = event.target.dataset.postId;
+    if (id) {
+        try {
+            const response = await fetch(`/dashboard/${id}`, {
+                method: 'GET'
+            });
+
+            if (response.ok) {
+                document.location.replace(`/dashboard/${id}`);
+            }
+            else {
+                alert(response.statusText);
+            }
+        }
+        catch (err) {
+            alert(err);
+        }
+    }
+};
+
+document
+    .querySelector('#dashboard')
+    .addEventListener('click', selectedPostHandler);
+
 document
     .querySelector('#new-post')
     .addEventListener('click', newPostHandler);

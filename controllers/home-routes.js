@@ -37,6 +37,20 @@ router.get('/dashboard', withAuth, async (req, res) => {
     }
 });
 
+router.get('/dashboard/:id', async (req, res) => {
+    try {
+        console.log('/dashboard/:id received')
+        const postData = await Post.findByPk(req.params.id);
+        const post = postData.get({ plain: true });
+        console.log(post);
+        res.render('editpost', { post, logged_in: true, page: 'Your Dashboard' });
+    }
+    catch (err) {
+        console.log("newPost ERR", err);
+        res.status(400).json(err);
+    }
+})
+
 router.get('/login', async (req, res) => {
     res.render('login', { page: 'Your Dashboard' });
 });

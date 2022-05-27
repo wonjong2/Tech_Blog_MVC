@@ -2,7 +2,7 @@ const updatePostHandler = async (event) => {
     event.preventDefault();
 
     // Collect values from the edit form
-    const id = document.querySelector('.card').dataset.id
+    const id = document.querySelector('.card').dataset.postId
     const title = document.querySelector('#title-post').value.trim();
     const content = document.querySelector('#content-post').value.trim();
 
@@ -25,7 +25,7 @@ const updatePostHandler = async (event) => {
 
 const deletePostHandler = async (event) => {
     // Collect values from the edit form
-    const id = document.querySelector('.card').dataset.id;
+    const id = document.querySelector('.card').dataset.postId;
 
     if (id) {
         // Send a DELETE request to the API endpoint

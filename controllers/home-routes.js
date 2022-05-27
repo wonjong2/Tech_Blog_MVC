@@ -1,11 +1,12 @@
 const router = require('express').Router();
-const { User, Post } = require('../models');
+const { User, Post, Comment } = require('../models');
 const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
     try {
         const postData = await Post.findAll(
             {
+                order: [['date', 'DESC']],
                 include: [
                     {
                         model: User,
@@ -25,11 +26,11 @@ router.get('/', async (req, res) => {
 
 router.get('/dashboard', withAuth, async (req, res) => {
     try {
-        const myPostData = await User.findOne({
-            where: { id: req.session.user_id },
-            include: { model: Post, attributes: ['id', 'title', 'date'] }
+        const myPostData = await Post.findAll({
+            where: { creator_id: req.session.user_id },
+            order: [['date', 'DESC']],
         })
-        const myPosts = myPostData.posts.map((post) => post.get({ plain: true }));
+        const myPosts = myPostData.map((post) => post.get({ plain: true }));
         res.render('dashboard', { myPosts, logged_in: true, page: 'Your Dashboard' });
     }
     catch (err) {
@@ -39,10 +40,8 @@ router.get('/dashboard', withAuth, async (req, res) => {
 
 router.get('/dashboard/:id', async (req, res) => {
     try {
-        console.log('/dashboard/:id received')
         const postData = await Post.findByPk(req.params.id);
         const post = postData.get({ plain: true });
-        console.log(post);
         res.render('editpost', { post, logged_in: true, page: 'Your Dashboard' });
     }
     catch (err) {
@@ -57,6 +56,29 @@ router.get('/login', async (req, res) => {
 
 router.get('/signup', async (req, res) => {
     res.render('signup', { page: 'The Tech Blog' });
+});
+
+router.get('/:id', async (req, res) => {
+    try {
+        console.log("Received /:id Reqeust");
+        const postData = await Post.findByPk(req.params.id, {
+            include: [{ model: User, attributes: ['user_name'] }]
+        });
+        const post = postData.get({ plain: true });
+        console.log("post", post);
+        const commentData = await Comment.findAll({
+            where: { post_id: req.params.id },
+            order: [['date', 'DESC']],
+            include: [{ model: User, attributes: ['user_name'] }]
+        })
+        const comments = commentData.map((comment) => comment.get({ plain: true }));
+        console.log("comments", comments);
+        res.render('comment', { post, comments, logged_in: req.session.logged_in, page: 'The Tech Blog' });
+    }
+    catch (err) {
+        console.log("Error", err);
+        res.status(400).json(err);
+    }
 });
 
 module.exports = router;

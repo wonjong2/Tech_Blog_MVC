@@ -36,21 +36,21 @@ const selectedPostHandler = async (event) => {
 
     console.log(id)
     if (id) {
-        try {
-            const response = await fetch(`/dashboard/${id}`, {
-                method: 'GET'
-            });
+        // try {
+        //     const response = await fetch(`/dashboard/${id}`, {
+        //         method: 'GET'
+        //     });
 
-            if (response.ok) {
-                document.location.assign(`/dashboard/${id}`);
-            }
-            else {
-                alert(response.statusText);
-            }
-        }
-        catch (err) {
-            alert(err);
-        }
+        //     if (response.ok) {
+        document.location.assign(`/dashboard/${id}`);
+        //     }
+        //     else {
+        //         alert(response.statusText);
+        //     }
+        // }
+        // catch (err) {
+        //     alert(err);
+        // }
     }
 };
 

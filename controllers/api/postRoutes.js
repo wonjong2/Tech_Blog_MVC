@@ -12,8 +12,8 @@ router.post('/', async (req, res) => {
             creator_id: req.session.user_id
         }
         const postData = await Post.create(newPost);
-        const post = postData.get({ plain: true });
-        res.status(201).json(post);
+        const savedPost = postData.get({ plain: true });
+        res.status(201).json(savedPost);
     } catch (err) {
         res.status(500).json(err);
     }

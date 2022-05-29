@@ -54,4 +54,12 @@ router.post('/logout', (req, res) => {
     }
 });
 
+router.get('/auth', (req, res) => {
+    if (req.session.logged_in) {
+        res.status(200).json('Logged In');
+    } else {
+        res.status(401).json('Need Login Again');
+    }
+});
+
 module.exports = router;

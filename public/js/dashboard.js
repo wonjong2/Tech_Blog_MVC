@@ -1,3 +1,20 @@
+async function checkAuthStatus() {
+    const response = await fetch('api/users/auth', {
+        method: 'GET'
+    });
+
+    if (response.ok) {
+        clearTimeout(authCheckTimer);
+        authCheckTimer = setTimeout(checkAuthStatus, 15000);
+    }
+    else {
+        alert("Please login again to add, update or delete post/comment");
+        document.location.replace('/login');
+    }
+}
+
+var authCheckTimer = setTimeout(checkAuthStatus, 5000);
+
 const newPostHandler = (event) => {
     const dashboardEl = document.querySelector('#dashboard');
     const newPostFormEl = document.querySelector('#new-post-form');
@@ -21,6 +38,9 @@ const createPostHandler = async (event) => {
             headers: { 'Content-Type': 'application/json' },
         });
 
+        clearTimeout(checkAuthCheck);
+        authCheckTimer = setTimeout(checkAuthStatus, 15000);
+
         if (response.ok) {
             // If successful, redirect the browser to the dashboard page
             document.location.replace('/dashboard');
@@ -34,6 +54,8 @@ const selectedPostHandler = async (event) => {
     const id = event.target.dataset.postId ? event.target.dataset.postId : event.target.parentElement.dataset.postId;
 
     if (id) {
+        clearTimeout(authCheckTimer);
+        authCheckTimer = setTimeout(checkAuthStatus, 15000);
         document.location.assign(`/dashboard/${id}`);
     }
 };

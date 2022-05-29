@@ -14,6 +14,11 @@ const updatePostHandler = async (event) => {
             headers: { 'Content-Type': 'application/json' },
         });
 
+        // Login state now, restart the timer to check auth.
+        if (isLogin) {
+            restartAuthTimer();
+        }
+
         if (response.ok) {
             // If successful, redirect the browser to the dashboard page
             document.location.replace('/dashboard');
@@ -34,6 +39,11 @@ const deletePostHandler = async (event) => {
             body: JSON.stringify({ id }),
             headers: { 'Content-Type': 'application/json' },
         });
+
+        // Login state now, restart the timer to check auth.
+        if (isLogin) {
+            restartAuthTimer();
+        }
 
         if (response.ok) {
             // If successful, redirect the browser to the dashboard page

@@ -4,21 +4,12 @@ const selectedPostHandler = async (event) => {
 
     console.log(id)
     if (id) {
-        // try {
-        // const response = await fetch(`/${id}`, {
-        //     method: 'GET'
-        // });
+        // Login state now, restart the timer to check auth.
+        if (isLogin) {
+            restartAuthTimer();
+        }
 
-        // if (response.ok) {
         document.location.assign(`/${id}`);
-        // }
-        //         else {
-        //     alert(response.statusText);
-        // }
-        // }
-        // catch (err) {
-        //     alert(err);
-        // }
     }
 };
 

@@ -1,20 +1,3 @@
-const checkAuthStatus = async () => {
-    const response = await fetch('api/users/auth', {
-        method: 'GET'
-    });
-
-    if (response.ok) {
-        clearTimeout(checkAuthCheck);
-        authCheckTimer = setTimeout(checkAuthStatus, 15000);
-    }
-    else {
-        alert("Please login again to add, update or delete post/comment");
-        document.location.replace('/login');
-    }
-}
-
-let authCheckTimer = setTimeout(checkAuthStatus, 15000);
-
 const submitCommentHandler = async (event) => {
     event.preventDefault();
 
@@ -29,6 +12,10 @@ const submitCommentHandler = async (event) => {
             body: JSON.stringify({ comment, post_id }),
             headers: { 'Content-Type': 'application/json' },
         });
+
+        if (isLogin) {
+            restartAuthTimer();
+        }
 
         if (response.ok) {
             // If successful, redirect the browser to the dashboard page

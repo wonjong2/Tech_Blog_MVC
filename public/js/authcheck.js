@@ -4,7 +4,7 @@ const isLogin = document.querySelector('#logout');
 // If there is logout in navibar, it means the logged-in state.
 // Login-state check timer will start only when logged-in state
 if (isLogin) {
-    let timeValue = 17000;
+    let timeValue = 12000;
     async function checkAuthStatus() {
         const response = await fetch('api/users/auth', {
             method: 'GET'

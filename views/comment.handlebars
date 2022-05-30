@@ -1,3 +1,4 @@
+{{!-- Render the selected post --}}
 <div class="container-fluid posts-home">
     <div class="card mt-3 mx-5 post-card" data-post-id="{{post.id}}">
         <div class="d-flex justify-content-between align-items-center card-header bg-secondary">
@@ -13,6 +14,7 @@
     </div>
 </div>
 
+{{!-- Render the comments area --}}
 <div class="container-fluid" id="comments-container">
     <div class="card mt-3 mx-5"">
         <div
@@ -20,6 +22,7 @@
         <p class="title mb-0">Comments</p>
     </div>
     <div class="card-body">
+        {{!-- Render the add comment area only if it is loggin state --}}
         {{#if logged_in}}
         <form class="add-comment-form form">
             <div class="mb-3">
@@ -31,6 +34,7 @@
             </div>
         </form>
         {{/if}}
+        {{!-- Render the exising comments --}}
         {{#if comments.length}}
         {{#each comments}}
         <p class="mb-1">{{this.comment}}</p>

@@ -1,3 +1,4 @@
+// Event handler for the update post button
 const updatePostHandler = async (event) => {
     event.preventDefault();
 
@@ -28,6 +29,7 @@ const updatePostHandler = async (event) => {
     }
 }
 
+// Event handler for the delete button
 const deletePostHandler = async (event) => {
     // Collect values from the edit form
     const id = document.querySelector('.card').dataset.postId;

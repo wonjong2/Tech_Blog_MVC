@@ -1,3 +1,4 @@
+// Event handler for the submission of the new comment
 const submitCommentHandler = async (event) => {
     event.preventDefault();
 
@@ -13,6 +14,7 @@ const submitCommentHandler = async (event) => {
             headers: { 'Content-Type': 'application/json' },
         });
 
+        // Restart Auth checking timer
         if (isLogin) {
             restartAuthTimer();
         }

@@ -1,3 +1,4 @@
+// Event handler for the new post button click
 const newPostHandler = (event) => {
     const dashboardEl = document.querySelector('#dashboard');
     const newPostFormEl = document.querySelector('#new-post-form');
@@ -6,6 +7,7 @@ const newPostHandler = (event) => {
     newPostFormEl.style.display = 'block';
 };
 
+// Event handler for the create button click
 const createPostHandler = async (event) => {
     event.preventDefault();
 
@@ -33,6 +35,7 @@ const createPostHandler = async (event) => {
     }
 };
 
+// Event handlers for the clicking on the specific post in the dashboard page 
 const selectedPostHandler = async (event) => {
     const id = event.target.dataset.postId ? event.target.dataset.postId : event.target.parentElement.dataset.postId;
 

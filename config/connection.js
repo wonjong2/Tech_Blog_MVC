@@ -3,6 +3,7 @@ require('dotenv').config();
 
 let sequelize;
 
+// Check which database is being used : JAWSDB_URL(Heroku) or MySQL(Local)
 if (process.env.JAWSDB_URL) {
   sequelize = new Sequelize(process.env.JAWSDB_URL);
 }

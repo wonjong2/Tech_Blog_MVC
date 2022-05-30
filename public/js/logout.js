@@ -1,3 +1,4 @@
+// Event handler for the clicking on the logout menu 
 const logoutHandler = async (event) => {
     event.preventDefault();
 

@@ -21,8 +21,8 @@ CSS describes how HTML elements should be displayed.`,
         creator_id: 1
     },
     {
-        title: 'Testing Post',
-        content: `Too difficult`,
+        title: 'How to create seed data on heroku?',
+        content: `In CLI, Type "heroku run seeds/index.js"`,
         date: 'May 24, 2022',
         creator_id: 4
     },

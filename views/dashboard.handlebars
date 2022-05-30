@@ -1,4 +1,5 @@
 <div class="container-fluid" id="dashboard">
+    {{!-- Render the posts created by the user --}}
     {{#each myPosts}}
     <div class="card mt-3 mx-5">
         <div class="d-flex justify-content-between align-items-center card-header bg-secondary"
@@ -9,6 +10,7 @@
     </div>
     {{/each}}
 
+    {{!-- Render 'New Post' button --}}
     <div class="d-flex">
         <button type="button" class="btn btn-primary btn-lg mt-3 mx-5" id="new-post">+ New Post</button>
     </div>

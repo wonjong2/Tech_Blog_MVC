@@ -2,6 +2,7 @@ const router = require('express').Router();
 const { User, Post, Comment } = require('../models');
 const withAuth = require('../utils/auth');
 
+// Home page
 router.get('/', async (req, res) => {
     try {
         const postData = await Post.findAll(
@@ -24,6 +25,8 @@ router.get('/', async (req, res) => {
     }
 });
 
+// If logout state : redirect to login page
+// If login state : retrive existing posts created by the user and render the dashboard page
 router.get('/dashboard', withAuth, async (req, res) => {
     try {
         const myPostData = await Post.findAll({
@@ -38,6 +41,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
     }
 });
 
+// Retrieve the post with the ID and render the edit post page
 router.get('/dashboard/:id', async (req, res) => {
     try {
         const postData = await Post.findByPk(req.params.id);
@@ -58,6 +62,7 @@ router.get('/signup', async (req, res) => {
     res.render('signup', { page: 'The Tech Blog' });
 });
 
+// Retrive the post with the ID and all comments that associated with it
 router.get('/:id', async (req, res) => {
     try {
         console.log("Received /:id Reqeust");

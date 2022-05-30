@@ -1,7 +1,9 @@
+/* Set the background color of the whole area */
 body {
     background-color: rgb(183, 243, 183);
 }
 
+/* Style for the page title such as "The Tech Blog" and "Your Dashboard" */
 #page-title {
     margin-left: 8px;
     margin-bottom: 15px;
@@ -14,18 +16,22 @@ body {
     background: lightgreen;
 }
 
+/* Font color for menus in navibar */
 .nav-link {
     color: black
 }
 
+/* Font color for the title of post */
 .card-header {
     color: white
 }
 
+/* Backgrtound color for the title area */
 .card {
     border: 2px rgb(99, 103, 108) solid
 }
 
+/* Font size for the title of post */
 .title {
     font-size: 1.5rem
 }
@@ -34,6 +40,7 @@ body {
     width: 100%;
 }
 
+/* Style for 'Login' and 'Sing Up' */
 .auth-option {
     margin: 10px 0 0 0
 }

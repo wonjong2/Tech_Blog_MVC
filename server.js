@@ -17,6 +17,7 @@ console.log(process.env);
 const sess = {
     secret: 'Super secret secret',
     cookie: {
+        // Set the COOKIE_MAXAGE to 3600000 (1hr) at the Heroku server
         maxAge: Number(process.env.COOKIE_MAXAGE),
         httpOnly: true,
         secure: false,

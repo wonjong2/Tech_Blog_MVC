@@ -16,8 +16,10 @@ router.post('/', async (req, res) => {
     }
 });
 
+// Handle login request 
 router.post('/login', async (req, res) => {
     try {
+        // Retrieve the user data from the DB
         const userData = await User.findOne({ where: { user_name: req.body.user_name } });
         if (!userData) {
             res
@@ -26,6 +28,7 @@ router.post('/login', async (req, res) => {
             return;
         }
 
+        // Compare the password from the user to it from the DB
         const validPassword = await userData.checkPassword(req.body.password);
         if (!validPassword) {
             res
@@ -54,6 +57,7 @@ router.post('/logout', (req, res) => {
     }
 });
 
+// Return the current login state to the client 
 router.get('/auth', (req, res) => {
     if (req.session.logged_in) {
         res.status(200).json('Logged In');

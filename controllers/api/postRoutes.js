@@ -19,6 +19,7 @@ router.post('/', async (req, res) => {
     }
 });
 
+// Update the post that has the ID passed in request
 router.put('/:id', async (req, res) => {
     try {
         const { id, title, content } = req.body;
@@ -37,6 +38,7 @@ router.put('/:id', async (req, res) => {
     }
 });
 
+// Delete the post that has the ID passed in request
 router.delete('/:id', async (req, res) => {
     try {
         const { id } = req.body;

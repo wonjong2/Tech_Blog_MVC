@@ -15,7 +15,7 @@ Build a CMS-style blog site, where developers can publish their blog posts and c
 -   Schema to this project
     ![schema](./images/schema.png)
 
-`Deployed Application: ` https://rocky-eyrie-63991.herokuapp.com/
+`Deployed Application: ` https://tech-blog-wonjong.herokuapp.com/
 
 ## Table of Contents
 

@@ -56,6 +56,8 @@ On the command prompt :
 16. WHEN the user is idle on the site for more than a set time(currently 1 hour), THEN the user is able to view comments but the user is prompted to log in again before I can add, update, or delete comments like below
     ![message](./images/needlogin.png)
 
+![saved_book](./images/home.png)
+
 ## License
 
 Copyright (c) 2022 `wonjong2` (GitHub Username) Licensed under [the MIT License](https://choosealicense.com/licenses/mit/).
